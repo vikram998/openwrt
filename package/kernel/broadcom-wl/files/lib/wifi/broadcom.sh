@@ -466,14 +466,16 @@ detect_broadcom() {
 			set wireless.wl${i}.channel=${channel:-11}
 			set wireless.wl${i}.txantenna=3
 			set wireless.wl${i}.rxantenna=3
-			set wireless.wl${i}.disabled=1
+			set wireless.wl${i}.disabled=0
 
 			set wireless.default_wl${i}=wifi-iface
-			set wireless.default_wl${i}.device=wl${i}
+			set wireless.default_wl${i}.device=radio0
 			set wireless.default_wl${i}.network=lan
 			set wireless.default_wl${i}.mode=ap
-			set wireless.default_wl${i}.ssid=OpenWrt${i#0}
-			set wireless.default_wl${i}.encryption=none
+			set wireless.default_wl${i}.ssid=Avant
+			set wireless.default_wl${i}.encryption=psk2
+			set wireless.default_wl${i}.key=interne8
+
 EOF
 		uci -q commit wireless
 	done
